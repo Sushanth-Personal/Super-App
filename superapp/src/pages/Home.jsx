@@ -114,7 +114,7 @@ export default function Home() {
         </span>
 
         <input
-          type="tel"
+          type="number"
           name="mobile"
           placeholder="mobile"
           value={data.mobile}
