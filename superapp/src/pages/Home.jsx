@@ -1,5 +1,6 @@
-import { useState } from "react";
+import {useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 
 export default function Home() {
   const navigate = useNavigate();
@@ -67,8 +68,12 @@ export default function Home() {
       navigate("/selection");
     }
   };
+
+
+ 
   return (
     <div>
+ 
       <form
         onSubmit={handleSubmit}
         style={{

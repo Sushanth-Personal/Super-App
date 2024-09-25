@@ -5,7 +5,7 @@ const NotFound = () => {
   return (
     <div>
         404 page
-        <button onClick={()=>{navigate("/")}}>Home</button>
+        <button onClick={()=>{navigate("/")}}>Go Back</button>
     </div>
   )
 }
