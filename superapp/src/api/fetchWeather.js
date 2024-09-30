@@ -20,3 +20,5 @@ const fetchWeather = (city="London") => {
         }
     )
 }
+
+export default fetchWeather;

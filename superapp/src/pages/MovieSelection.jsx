@@ -1,7 +1,7 @@
 
-import { useState } from "react";
-import MovieBox from "../../components/MovieBox";
-import SelectedChips from "../../components/SelectedChips";
+import { useState, useEffect } from "react";
+import MovieBox from "../components/MovieBox";
+import SelectedChips from "../components/SelectedChips";
 import { useNavigate } from "react-router-dom";
 
 const MOVIES = [
@@ -46,6 +46,13 @@ const MOVIES = [
 const Selection = () => {
 const [selectedMovie, setSelectedMovie] = useState([]);
 const Navigate = useNavigate();
+
+useEffect(
+  ()=>{
+    localStorage.setItem("userMovies",JSON.stringify(selectedMovie));
+    console.log(JSON.parse(localStorage.getItem("userMovies")));
+  },
+[selectedMovie]);
 
 const moveNext = ()=>{
   if(selectedMovie.length<3){

@@ -1,20 +1,20 @@
-import axios from "axios"
 
-const BASE_URL = "https://newsapi.org/v2";
-const API_KEY = import.meta.env.VITE_NEW_API;
+import axios from 'axios';
+const BASE_URL = "https://newsapi.org/v2/top-headlines";
+const API_KEY = import.meta.env.VITE_NEWS_API;
 
-
-const fetchNews = () => {
-    return axios.get( BASE_URL, {
-        params: {
-            apiKey:API_KEY,
-            sources:"techcrunch"
-        }
+const fetchNews = async () => {
+    try {
+        const { data } = await axios.get(BASE_URL, {
+            params: {
+                apiKey: API_KEY,
+                sources: "techcrunch"
+            },
+        });
+        return data;
+    } catch (error) {
+        console.error(error);
     }
-).then((Response)=>{
-    return Response;
-}).catch((err)=>{
-    console.error(err);
-    throw err;
-})
-}
+};
+
+export default fetchNews;

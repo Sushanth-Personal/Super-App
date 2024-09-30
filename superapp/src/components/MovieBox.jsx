@@ -1,6 +1,6 @@
 
 const MovieBox = ({selectedMovie, setSelectedMovie, category}) => {
-
+    
     const handleClick = (category) => {
         return () => {
             console.log(category.movie); 
