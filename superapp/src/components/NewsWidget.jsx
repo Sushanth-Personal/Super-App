@@ -5,10 +5,14 @@ import formatDateAndTime from "../utils/formatDateAndTime";
 
 const NewsWidget = () => {
   const [news, setNews] = useState();
-  const [pubileshedAt, setPublishedAt] = useState({
+  const [publishedAt, setPublishedAt] = useState({
     data:'',
     time:'',
   });
+
+ const [loading, setLoading] = useState(true);
+ 
+
 
   useEffect(() => {
     fetchNews().then((data) => {
@@ -21,33 +25,49 @@ const NewsWidget = () => {
         
         const {date,time} = formatDateAndTime(data.articles[randomIndex].pubileshedAt);
         setPublishedAt({
-          ...pubileshedAt,
+          ...publishedAt,
           date:date,
           time:time,
         })
+        setLoading(false);
         setNews(data.articles[randomIndex]);
       }
     });
   }, []);
 
   return (
-    <div className={styles.container}>
-      <>
-        <div className={styles.header}>
-          <img src={news?.urlToImage} alt="News Image" />
-          <div className={styles.heading}>
-            <p>{news?.title}</p>
-            <p className={styles.dateAndTime}>
-              <span>{pubileshedAt.date}</span>
-              <span>{pubileshedAt.time}</span>
-            </p>
-          </div>
-        </div>
-        <div className={styles.body}>
-          {news?.description}
-        </div>
-      </>
+  
+  loading?
+  (
+    <div className = {styles.skeletonContainer}>
+      <div className = {`${styles.skeletonBox} ${styles.skeletonHeader}`}></div>
+      <div className = {`${styles.skeletonBox} ${styles.skeletonHeading}`}></div>
     </div>
+  ):(<>
+  <div className={styles.container}>
+
+<div className={styles.header}>
+<img src={news?.urlToImage} alt="News Image" />
+<div className={styles.heading}>
+  <p>{news?.title}</p>
+  <p className={styles.dateAndTime}>
+    <span>{publishedAt.date}</span>
+    <span>{publishedAt.time}</span>
+  </p>
+</div>
+</div>
+<div className={styles.body}>
+{news?.description}
+</div>
+
+
+</div>
+  </>
+  
+  )
+
+    
+    
   );
 };
 
