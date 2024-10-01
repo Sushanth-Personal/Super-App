@@ -6,13 +6,14 @@ import Selection from "./pages/MovieSelection.jsx";
 import NotFound from "./pages/404.jsx";
 import CarouselPage from "./pages/CarouselPage.jsx";
 import "./main.css";
+import Dashboard from "./pages/Dashboard.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-
+        <Route path = "/dashboard" element ={<Dashboard/>}/>
         <Route path="/selection" element={<Selection />} />
         <Route path="*" element={<NotFound />} />
         <Route path = "/carousel" element ={<CarouselPage/>}/>
