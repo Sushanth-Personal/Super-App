@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: black;
+  display: grid;
+  grid-template-areas:
+    "profileWidget notes news"
+    "weather notes news"
+    "timer timer news";
+  width: 100vw;
+  height: 100vh;
+  padding:96px 64px 94px 94px;
+}
+
+.profileWidget {
+    grid-area: profileWidget;
+    margin-bottom:39px;
+}
+
+.notesWidget{
+    grid-area:notes;
+    margin-bottom:39px;
+}
+
+.weatherWidget{
+    grid-area:weather;
+    margin-bottom:39px;
+}
+
+.timerWidget{
+    grid-area:timer
+}
+
+.newsWidget{
+    grid-area:news;
+}
